@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Joanna Marie Enero | Virtual Assistant Portfolio</title>
-  <meta name="description" content="Portfolio for Joanna Marie Enero, a Virtual Assistant specializing in healthcare documentation, admin support, creator outreach, lead generation, and customer support.">
+  <title>Joanna Marie | Virtual Assistant Portfolio</title>
+  <meta name="description" content="Portfolio for Joanna Marie, a Virtual Assistant specializing in healthcare documentation, admin support, creator outreach, lead generation, and customer support.">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
     :root {
       --bg: #fffafa;
       --panel: #ffffff;
@@ -17,6 +19,8 @@
       --muted: #6e626a;
       --line: #ead2dc;
       --shadow: 0 18px 48px rgba(132, 37, 72, 0.12);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * {
@@ -29,10 +33,40 @@
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      position: relative;
+      overflow-x: hidden;
+      font-family: var(--sans);
       color: var(--ink);
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(245, 183, 207, 0.42), transparent 30%),
+        radial-gradient(circle at 88% 10%, rgba(255, 245, 233, 0.88), transparent 28%),
+        linear-gradient(180deg, #fff7fb 0%, #fffafa 34%, #fff4f8 68%, #ffffff 100%);
       line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 18% 35%, rgba(190, 71, 120, 0.11), transparent 24%),
+        radial-gradient(circle at 78% 52%, rgba(245, 183, 207, 0.2), transparent 24%),
+        radial-gradient(circle at 48% 88%, rgba(255, 245, 233, 0.9), transparent 32%);
+      animation: pageGlow 16s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(132, 37, 72, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(132, 37, 72, 0.03) 1px, transparent 1px);
+      background-size: 76px 76px;
+      mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 70%, transparent);
     }
 
     a {
@@ -142,11 +176,27 @@
 
     h1 {
       max-width: 720px;
-      font-size: clamp(42px, 7vw, 76px);
+      font-family: var(--serif);
+      font-size: clamp(48px, 7vw, 86px);
+      font-weight: 800;
+      line-height: 0.98;
+    }
+
+    .hero-title-accent {
+      display: block;
+      width: fit-content;
+      color: transparent;
+      background: linear-gradient(105deg, #842548 0%, #b63e6c 48%, #f0a9c4 78%, #842548 100%);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerText 7s ease-in-out infinite alternate;
     }
 
     h2 {
+      font-family: var(--serif);
       font-size: clamp(30px, 4vw, 46px);
+      font-weight: 760;
     }
 
     h3 {
@@ -602,14 +652,152 @@
         padding-top: 48px;
       }
     }
+
+    .nav {
+      background: rgba(255, 248, 251, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .mark {
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fff, #ffe3ee 55%, #f5b7cf);
+      box-shadow: 0 10px 30px rgba(132, 37, 72, 0.12);
+      font-family: var(--serif);
+    }
+
+    .button {
+      background: linear-gradient(135deg, #842548, #b63e6c 56%, #e7a3bd);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(132, 37, 72, 0.24);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 12px 30px rgba(132, 37, 72, 0.08);
+    }
+
+    .hero {
+      padding: 96px 0 76px;
+    }
+
+    .lead {
+      text-wrap: pretty;
+    }
+
+    .stat,
+    .card,
+    .resume-card,
+    .experience-item {
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat {
+      box-shadow: 0 12px 32px rgba(132, 37, 72, 0.06);
+    }
+
+    .hero-art {
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.96), transparent 24%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(253, 225, 236, 0.88) 54%, rgba(255, 245, 233, 0.86)),
+        radial-gradient(circle at 20% 15%, rgba(182, 62, 108, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 72%, rgba(111, 129, 116, 0.14), transparent 30%);
+    }
+
+    .center-mark {
+      border-radius: 32px;
+      background: linear-gradient(135deg, #842548, #b63e6c 48%, #f0a9c4);
+    }
+
+    section {
+      padding: 78px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .card,
+    .resume-card,
+    .experience-item {
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .card:hover,
+    .resume-card:hover,
+    .experience-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(182, 62, 108, 0.36);
+      box-shadow: 0 24px 58px rgba(132, 37, 72, 0.12);
+    }
+
+    .card.accent {
+      background: linear-gradient(145deg, #fff, #fff1f6);
+    }
+
+    .contact {
+      background:
+        radial-gradient(circle at 14% 20%, rgba(245, 183, 207, 0.18), transparent 28%),
+        linear-gradient(135deg, #2a2026, #5c1d38 56%, #842548);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 760ms ease, transform 760ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pageGlow {
+      from {
+        transform: translate3d(-18px, -10px, 0) scale(1);
+        opacity: 0.82;
+      }
+      to {
+        transform: translate3d(18px, 16px, 0) scale(1.04);
+        opacity: 1;
+      }
+    }
+
+    @keyframes shimmerText {
+      from {
+        background-position: 0% center;
+      }
+      to {
+        background-position: 100% center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
   <nav class="nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Joanna Marie Enero home">
-        <span class="mark">JME</span>
-        <span>Joanna Marie Enero</span>
+      <a class="brand" href="#top" aria-label="Joanna Marie home">
+        <span class="mark">JM</span>
+        <span>Joanna Marie</span>
       </a>
       <div class="links" aria-label="Main navigation">
         <a href="#services">Services</a>
@@ -624,7 +812,7 @@
   <main id="top">
     <header class="hero">
       <div class="wrap hero-grid">
-        <div>
+        <div class="reveal">
           <p class="eyebrow">Virtual Assistant Portfolio</p>
           <h1>Behind-the-scenes support for founders and growing teams.</h1>
           <p class="lead">I help business owners stay focused by managing the details behind the scenes: admin tasks, documentation, inbox support, lead tracking, outreach follow-ups, and organized day-to-day operations.</p>
@@ -647,7 +835,7 @@
             </div>
           </div>
         </div>
-        <figure class="hero-art" aria-label="Animated founder support and virtual assistant workspace visual">
+        <figure class="hero-art reveal" aria-label="Animated founder support and virtual assistant workspace visual">
           <div class="orbit one" aria-hidden="true"></div>
           <div class="orbit two" aria-hidden="true"></div>
           <div class="center-mark">VA</div>
@@ -677,13 +865,13 @@
 
     <section id="services">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="eyebrow">Services</p>
           <h2>Support for business owners who need reliable execution.</h2>
           <p>I support founders, healthcare teams, and growing brands with organized admin work, documentation, communication, and outreach systems.</p>
         </div>
         <div class="service-grid">
-          <article class="card accent">
+          <article class="card accent reveal">
             <span class="tag">Founder Support</span>
             <h3>Admin, Operations & Task Management</h3>
             <ul>
@@ -694,7 +882,7 @@
               <li>Clear communication so daily operations keep moving</li>
             </ul>
           </article>
-          <article class="card">
+          <article class="card reveal">
             <span class="tag">Medical VA</span>
             <h3>Healthcare Documentation & Admin Support</h3>
             <ul>
@@ -704,7 +892,7 @@
               <li>Confidential information handling with care</li>
             </ul>
           </article>
-          <article class="card">
+          <article class="card reveal">
             <span class="tag">Outreach VA</span>
             <h3>Creator Outreach & Lead Generation</h3>
             <ul>
@@ -721,26 +909,26 @@
 
     <section id="experience">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="eyebrow">Experience</p>
           <h2>A practical background built around accuracy and follow-through.</h2>
         </div>
         <div class="experience-list">
-          <article class="experience-item">
+          <article class="experience-item reveal">
             <div class="date">Freelance</div>
             <div>
               <h3>Virtual Assistant</h3>
               <p>Supported creator outreach, influencer research, lead generation, appointment setting, campaign trackers, email follow-ups, Canva graphics, and social media content calendars.</p>
             </div>
           </article>
-          <article class="experience-item">
+          <article class="experience-item reveal">
             <div class="date">2020 - 2022</div>
             <div>
               <h3>Customer Support Representative - Tech Mahindra</h3>
               <p>Handled non-voice customer support, account concerns, order and shipping issues, documentation updates, and follow-ups in a fast-paced environment.</p>
             </div>
           </article>
-          <article class="experience-item">
+          <article class="experience-item reveal">
             <div class="date">BS Nursing</div>
             <div>
               <h3>Nursing Background - University of Cebu Banilad</h3>
@@ -753,12 +941,12 @@
 
     <section id="skills">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="eyebrow">Skills</p>
           <h2>Organized skill groups for easier scanning.</h2>
         </div>
         <div class="skills-grid">
-          <article class="card">
+          <article class="card reveal">
             <h3>Healthcare & Documentation</h3>
             <div class="skill-list">
               <span class="pill">Medical Terminology</span>
@@ -768,7 +956,7 @@
               <span class="pill">Confidentiality</span>
             </div>
           </article>
-          <article class="card">
+          <article class="card reveal">
             <h3>Admin & Support</h3>
             <div class="skill-list">
               <span class="pill">Data Entry</span>
@@ -778,7 +966,7 @@
               <span class="pill">Follow-ups</span>
             </div>
           </article>
-          <article class="card">
+          <article class="card reveal">
             <h3>Outreach & Social Media</h3>
             <div class="skill-list">
               <span class="pill">Lead Generation</span>
@@ -794,19 +982,19 @@
 
     <section id="resume">
       <div class="wrap">
-        <div class="section-head">
+        <div class="section-head reveal">
           <p class="eyebrow">Resume</p>
           <h2>Choose the resume that fits the role.</h2>
           <p>Keep the portfolio broad and polished, then send the focused resume version that matches the job post.</p>
         </div>
         <div class="resume-grid">
-          <article class="resume-card">
+          <article class="resume-card reveal">
             <span class="tag">Healthcare roles</span>
             <h3>Medical VA Resume</h3>
             <p>Best for Medical Virtual Assistant, Medical Scribe, healthcare admin, patient records, and clinical documentation roles.</p>
             <a class="button" href="joanna-medical-va-resume.pdf">Download Medical VA Resume</a>
           </article>
-          <article class="resume-card">
+          <article class="resume-card reveal">
             <span class="tag">Growth roles</span>
             <h3>Outreach VA Resume</h3>
             <p>Best for creator outreach, influencer partnerships, lead generation, appointment setting, and social media support roles.</p>
@@ -817,7 +1005,7 @@
     </section>
 
     <section id="contact" class="contact">
-      <div class="wrap contact-row">
+      <div class="wrap contact-row reveal">
         <div class="section-head">
           <p class="eyebrow">Contact</p>
           <h2>Let us work together.</h2>
@@ -832,7 +1020,20 @@
   </main>
 
   <footer>
-    <div class="wrap">Â© 2026 Joanna Marie Enero. Virtual Assistant Portfolio.</div>
+    <div class="wrap">Â© 2026 Joanna Marie. Virtual Assistant Portfolio.</div>
   </footer>
+  <script>
+    const revealItems = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
