@@ -199,18 +199,191 @@
     }
 
     .hero-art {
+      position: relative;
+      min-height: 500px;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(253, 231, 240, 0.88)),
+        radial-gradient(circle at 20% 15%, rgba(182, 62, 108, 0.14), transparent 34%),
+        radial-gradient(circle at 80% 72%, rgba(111, 129, 116, 0.12), transparent 30%);
       box-shadow: var(--shadow);
     }
 
-    .hero-art img {
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: -25%;
+      background:
+        linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.7) 38%, transparent 54%),
+        repeating-linear-gradient(90deg, rgba(132, 37, 72, 0.05) 0 1px, transparent 1px 70px);
+      animation: ambientShift 10s ease-in-out infinite alternate;
+    }
+
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(182, 62, 108, 0.12);
+      border-radius: 14px;
+      pointer-events: none;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px dashed rgba(132, 37, 72, 0.2);
+      border-radius: 50%;
+      animation: rotateSoft 22s linear infinite;
+    }
+
+    .orbit.one {
+      top: 42px;
+      right: 46px;
+    }
+
+    .orbit.two {
+      left: 38px;
+      bottom: 50px;
+      width: 130px;
+      height: 130px;
+      animation-duration: 28s;
+      animation-direction: reverse;
+    }
+
+    .work-card {
+      position: absolute;
+      width: min(230px, 42%);
+      padding: 16px;
+      border: 1px solid rgba(234, 210, 220, 0.95);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 18px 38px rgba(132, 37, 72, 0.11);
+      backdrop-filter: blur(12px);
+      animation: floatSoft 6s ease-in-out infinite;
+    }
+
+    .work-card h4 {
+      margin: 0 0 10px;
+      color: var(--rose-dark);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .work-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .work-card.founder {
+      top: 52px;
+      left: 48px;
+    }
+
+    .work-card.inbox {
+      top: 174px;
+      right: 48px;
+      animation-delay: -1.4s;
+    }
+
+    .work-card.tracker {
+      left: 68px;
+      bottom: 72px;
+      animation-delay: -2.8s;
+    }
+
+    .work-card.calendar {
+      right: 70px;
+      bottom: 46px;
+      animation-delay: -4.2s;
+    }
+
+    .center-mark {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 138px;
+      height: 138px;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      color: #fff;
+      background: linear-gradient(135deg, #842548, #b63e6c 48%, #e7a3bd);
+      box-shadow: 0 24px 60px rgba(132, 37, 72, 0.26);
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: 0;
+      animation: pulseMark 4.8s ease-in-out infinite;
+    }
+
+    .sparkline {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 5px;
+      align-items: end;
+      height: 42px;
+      margin-top: 14px;
+    }
+
+    .sparkline span {
       display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      border-radius: 999px 999px 4px 4px;
+      background: linear-gradient(180deg, #b63e6c, #f0b8ca);
+      animation: barRise 1.8s ease-in-out infinite alternate;
+    }
+
+    .sparkline span:nth-child(1) { height: 38%; }
+    .sparkline span:nth-child(2) { height: 62%; animation-delay: 0.1s; }
+    .sparkline span:nth-child(3) { height: 48%; animation-delay: 0.2s; }
+    .sparkline span:nth-child(4) { height: 78%; animation-delay: 0.3s; }
+    .sparkline span:nth-child(5) { height: 58%; animation-delay: 0.4s; }
+    .sparkline span:nth-child(6) { height: 86%; animation-delay: 0.5s; }
+    .sparkline span:nth-child(7) { height: 66%; animation-delay: 0.6s; }
+    .sparkline span:nth-child(8) { height: 92%; animation-delay: 0.7s; }
+
+    @keyframes ambientShift {
+      from {
+        transform: translate3d(-24px, -16px, 0) rotate(0deg);
+      }
+      to {
+        transform: translate3d(26px, 18px, 0) rotate(2deg);
+      }
+    }
+
+    @keyframes floatSoft {
+      0%, 100% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(0, -12px, 0);
+      }
+    }
+
+    @keyframes rotateSoft {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulseMark {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.04);
+      }
+    }
+
+    @keyframes barRise {
+      to {
+        transform: scaleY(0.72);
+        opacity: 0.72;
+      }
     }
 
     section {
@@ -383,6 +556,40 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-art {
+        min-height: 560px;
+      }
+
+      .work-card {
+        width: 220px;
+      }
+
+      .work-card.founder {
+        top: 36px;
+        left: 22px;
+      }
+
+      .work-card.inbox {
+        top: 148px;
+        right: 22px;
+      }
+
+      .work-card.tracker {
+        left: 22px;
+        bottom: 122px;
+      }
+
+      .work-card.calendar {
+        right: 22px;
+        bottom: 28px;
+      }
+
+      .center-mark {
+        width: 112px;
+        height: 112px;
+        font-size: 34px;
+      }
+
       .experience-item {
         grid-template-columns: 1fr;
       }
@@ -419,8 +626,8 @@
       <div class="wrap hero-grid">
         <div>
           <p class="eyebrow">Virtual Assistant Portfolio</p>
-          <h1>Healthcare admin, documentation, and outreach support.</h1>
-          <p class="lead">I help busy teams stay organized through accurate documentation, reliable communication, lead tracking, and thoughtful follow-up. My background combines nursing training, customer support, and freelance creator outreach.</p>
+          <h1>Behind-the-scenes support for founders and growing teams.</h1>
+          <p class="lead">I help business owners stay focused by managing the details behind the scenes: admin tasks, documentation, inbox support, lead tracking, outreach follow-ups, and organized day-to-day operations.</p>
           <div class="actions">
             <a class="button" href="mailto:joannamariespace@gmail.com">Hire Me</a>
             <a class="button secondary" href="#resume">View Resumes</a>
@@ -436,12 +643,34 @@
             </div>
             <div class="stat">
               <strong>VA</strong>
-              <span>Medical and outreach</span>
+              <span>Founder support</span>
             </div>
           </div>
         </div>
-        <figure class="hero-art" aria-label="Abstract professional workspace visual">
-          <img src="portfolio-hero.png" alt="Clean abstract blush workspace with calendar, spreadsheet, and admin support motifs">
+        <figure class="hero-art" aria-label="Animated founder support and virtual assistant workspace visual">
+          <div class="orbit one" aria-hidden="true"></div>
+          <div class="orbit two" aria-hidden="true"></div>
+          <div class="center-mark">VA</div>
+          <div class="work-card founder">
+            <h4>Founder Support</h4>
+            <p>Tasks organized, follow-ups handled, priorities moving.</p>
+          </div>
+          <div class="work-card inbox">
+            <h4>Inbox + Calendar</h4>
+            <p>Clear communication, scheduling, reminders, and updates.</p>
+          </div>
+          <div class="work-card tracker">
+            <h4>Lead Tracker</h4>
+            <p>Prospects, outreach, responses, and next steps in one place.</p>
+            <div class="sparkline" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="work-card calendar">
+            <h4>Operations</h4>
+            <p>Admin, documentation, reports, and behind-the-scenes support.</p>
+          </div>
         </figure>
       </div>
     </header>
@@ -450,19 +679,29 @@
       <div class="wrap">
         <div class="section-head">
           <p class="eyebrow">Services</p>
-          <h2>Two focused ways I can support your team.</h2>
-          <p>Instead of mixing every skill into one long list, the portfolio separates your strongest role directions clearly.</p>
+          <h2>Support for business owners who need reliable execution.</h2>
+          <p>I support founders, healthcare teams, and growing brands with organized admin work, documentation, communication, and outreach systems.</p>
         </div>
         <div class="service-grid">
           <article class="card accent">
+            <span class="tag">Founder Support</span>
+            <h3>Admin, Operations & Task Management</h3>
+            <ul>
+              <li>Behind-the-scenes task coordination for business owners</li>
+              <li>Inbox, calendar, reminders, and follow-up support</li>
+              <li>Data entry, research, trackers, and organized reporting</li>
+              <li>Documentation, file organization, and process support</li>
+              <li>Clear communication so daily operations keep moving</li>
+            </ul>
+          </article>
+          <article class="card">
             <span class="tag">Medical VA</span>
             <h3>Healthcare Documentation & Admin Support</h3>
             <ul>
               <li>Medical documentation and chart review support</li>
-              <li>Patient records organization and data entry</li>
+              <li>Patient records organization and accurate data entry</li>
               <li>Calendar, appointment, and follow-up assistance</li>
               <li>Confidential information handling with care</li>
-              <li>Email, chat, and administrative support</li>
             </ul>
           </article>
           <article class="card">
@@ -593,7 +832,7 @@
   </main>
 
   <footer>
-    <div class="wrap">© 2026 Joanna Marie Enero. Virtual Assistant Portfolio.</div>
+    <div class="wrap">Â© 2026 Joanna Marie Enero. Virtual Assistant Portfolio.</div>
   </footer>
 </body>
 </html>
